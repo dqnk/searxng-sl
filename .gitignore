@@ -1,0 +1,4 @@
+searxng/
+*.pyc
+__pycache__/
+.env

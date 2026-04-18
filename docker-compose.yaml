@@ -1,0 +1,40 @@
+name: searxng-sl
+
+services:
+  searxng:
+    build: .
+    container_name: searxng-core
+    restart: unless-stopped
+    volumes:
+      - ./searxng:/etc/searxng:rw
+      - core-data:/var/cache/searxng
+    expose:
+      - "8080"
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - "-q"
+        - "--spider"
+        - "http://127.0.0.1:8080/healthz"
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+  redis:
+    image: "redis:7"
+    restart: always
+    volumes:
+      - "redis-data:/data"
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  core-data:
+  redis-data:

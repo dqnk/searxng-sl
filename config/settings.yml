@@ -1,0 +1,347 @@
+use_default_settings: true
+
+server:
+  limiter: false
+  image_proxy: true
+
+search:
+  languages:
+    - sl
+    - sl-SI
+    - en
+    - en-US
+  formats:
+    - html
+    - csv
+    - json
+    - rss
+
+ui:
+  static_use_hash: true
+
+hostnames:
+  high_priority:
+    # Reference & encyclopedias
+    - (.*\.)?wikipedia\.org$
+    - (.*\.)?wiktionary\.org$
+    - (.*\.)?wikimedia\.org$
+    - (.*\.)?britannica\.com$
+
+    # Q&A / Stack Exchange network
+    - (.*\.)?stackoverflow\.com$
+    - (.*\.)?stackexchange\.com$
+    - (.*\.)?superuser\.com$
+    - (.*\.)?serverfault\.com$
+    - (.*\.)?askubuntu\.com$
+    - (.*\.)?mathoverflow\.net$
+
+    # Developer docs & communities
+    - (.*\.)?github\.com$
+    - (.*\.)?gitlab\.com$
+    - (.*\.)?mozilla\.org$
+    - (.*\.)?readthedocs\.io$
+    - (.*\.)?readthedocs\.org$
+    - (.*\.)?python\.org$
+    - (.*\.)?rust-lang\.org$
+    - (.*\.)?golang\.org$
+    - (.*\.)?go\.dev$
+    - (.*\.)?kernel\.org$
+    - (.*\.)?archlinux\.org$
+    - (.*\.)?debian\.org$
+    - (.*\.)?ubuntu\.com$
+    - (.*\.)?freebsd\.org$
+    - (.*\.)?gnu\.org$
+    - (.*\.)?postgresql\.org$
+
+    # Tech news & discussion
+    - (.*\.)?news\.ycombinator\.com$
+    - (.*\.)?lobste\.rs$
+    - (.*\.)?reddit\.com$
+    - (.*\.)?arstechnica\.com$
+
+    # Science & academia
+    - (.*\.)?arxiv\.org$
+    - (.*\.)?nature\.com$
+    - (.*\.)?science\.org$
+    - (.*\.)?sciencedirect\.com$
+    - (.*\.)?springer\.com$
+    - (.*\.)?ieee\.org$
+    - (.*\.)?acm\.org$
+    - (.*\.)?plos\.org$
+    - (.*\.)?ncbi\.nlm\.nih\.gov$
+    - (.*\.)?pubmed\.ncbi\.nlm\.nih\.gov$
+    - (.*\.)?who\.int$
+    - (.*\.)?nasa\.gov$
+    - (.*\.)?nist\.gov$
+
+    # Long-form / writing / books
+    - (.*\.)?gutenberg\.org$
+    - (.*\.)?archive\.org$
+
+    # News (quality wire / long-form)
+    - (.*\.)?reuters\.com$
+    - (.*\.)?apnews\.com$
+    - (.*\.)?bbc\.com$
+    - (.*\.)?bbc\.co\.uk$
+
+  low_priority:
+    # Low-quality tutorial/SEO sites
+    - (.*\.)?w3schools\.com$
+    - (.*\.)?geeksforgeeks\.org$
+    - (.*\.)?tutorialspoint\.com$
+    - (.*\.)?javatpoint\.com$
+    - (.*\.)?programiz\.com$
+
+    # Low-quality Q&A
+    - (.*\.)?quora\.com$
+    - (.*\.)?answers\.com$
+    - (.*\.)?chegg\.com$
+    - (.*\.)?coursehero\.com$
+    - (.*\.)?brainly\.com$
+
+    # Content farms / listicle sites
+    - (.*\.)?wikihow\.com$
+    - (.*\.)?ehow\.com$
+    - (.*\.)?buzzfeed\.com$
+    - (.*\.)?mashable\.com$
+    - (.*\.)?makeuseof\.com$
+    - (.*\.)?lifehacker\.com$
+    - (.*\.)?lifewire\.com$
+    - (.*\.)?digitaltrends\.com$
+
+    # Aggregators / scrapers / mirrors
+    - (.*\.)?slideshare\.net$
+    - (.*\.)?scribd\.com$
+    - (.*\.)?academia\.edu$
+    - (.*\.)?researchgate\.net$
+
+    # Stack Overflow scrapers
+    - (.*\.)?9to5answer\.com$
+    - (.*\.)?newbedev\.com$
+    - (.*\.)?codegrepper\.com$
+    - (.*\.)?programcreek\.com$
+    - (.*\.)?bleepcoder\.com$
+    - (.*\.)?solveforum\.com$
+    - (.*\.)?appsloveworld\.com$
+    - (.*\.)?educba\.com$
+    - (.*\.)?csdn\.net$
+
+    # GitHub scrapers
+    - (.*\.)?giters\.com$
+    - (.*\.)?githubplus\.com$
+    - (.*\.)?geekrepos\.com$
+    - (.*\.)?libhunt\.com$
+    - (.*\.)?issuehint\.com$
+
+    # Health SEO
+    - (.*\.)?healthline\.com$
+    - (.*\.)?webmd\.com$
+    - (.*\.)?medicalnewstoday\.com$
+    - (.*\.)?everydayhealth\.com$
+    - (.*\.)?verywellhealth\.com$
+    - (.*\.)?verywellmind\.com$
+    - (.*\.)?verywellfit\.com$
+    - (.*\.)?verywellfamily\.com$
+
+    # Tabloid / low-quality news
+    - (.*\.)?dailymail\.co\.uk$
+    - (.*\.)?nypost\.com$
+    - (.*\.)?foxnews\.com$
+    - (.*\.)?breitbart\.com$
+    - (.*\.)?msn\.com$
+    - (.*\.)?forbes\.com$ # council contributor slop
+    - (.*\.)?businessinsider\.com$
+    - (.*\.)?huffpost\.com$
+
+    # Social media (lower, don't remove — sometimes you want the source)
+    - (.*\.)?facebook\.com$
+    - (.*\.)?instagram\.com$
+    - (.*\.)?tiktok\.com$
+    - (.*\.)?twitter\.com$
+    - (.*\.)?x\.com$
+    - (.*\.)?linkedin\.com$
+    - (.*\.)?threads\.net$
+
+    # Commerce (lower so reviews/docs outrank product pages)
+    - (.*\.)?amazon\.com$
+    - (.*\.)?amazon\.co\.uk$
+    - (.*\.)?amazon\.de$
+    - (.*\.)?ebay\.com$
+    - (.*\.)?etsy\.com$
+    - (.*\.)?walmart\.com$
+    - (.*\.)?bestbuy\.com$
+    - (.*\.)?aliexpress\.com$
+    - (.*\.)?temu\.com$
+
+    # Review aggregators / coupon spam
+    - (.*\.)?retailmenot\.com$
+    - (.*\.)?offers\.com$
+    - (.*\.)?dealsofamerica\.com$
+    - (.*\.)?blackfriday\.com$
+
+    # Medium (mixed quality, demote rather than remove)
+    - (.*\.)?medium\.com$
+
+    # Big lifestyle-content conglomerates (Condé Nast / Dotdash Meredith / Hearst)
+    - (.*\.)?allrecipes\.com$
+    - (.*\.)?foodandwine\.com$
+    - (.*\.)?bonappetit\.com$
+    - (.*\.)?epicurious\.com$
+    - (.*\.)?seriouseats\.com$ # actually good, but Dotdash now — you may want to remove this line
+    - (.*\.)?simplyrecipes\.com$
+    - (.*\.)?eatingwell\.com$
+    - (.*\.)?cookinglight\.com$
+    - (.*\.)?liquor\.com$
+    - (.*\.)?bhg\.com$
+    - (.*\.)?marthastewart\.com$
+    - (.*\.)?realsimple\.com$
+    - (.*\.)?southernliving\.com$
+    - (.*\.)?midwestliving\.com$
+    - (.*\.)?travelandleisure\.com$
+    - (.*\.)?tripsavvy\.com$
+    - (.*\.)?investopedia\.com$
+    - (.*\.)?thebalancemoney\.com$
+    - (.*\.)?thestreet\.com$
+    - (.*\.)?parents\.com$
+    - (.*\.)?parade\.com$
+    - (.*\.)?people\.com$
+    - (.*\.)?usmagazine\.com$
+    - (.*\.)?intouchweekly\.com$
+    - (.*\.)?closerweekly\.com$
+    - (.*\.)?lifeandstylemag\.com$
+    - (.*\.)?firstforwomen\.com$
+    - (.*\.)?womansworld\.com$
+    - (.*\.)?scarymommy\.com$
+    - (.*\.)?romper\.com$
+    - (.*\.)?fatherly\.com$
+    - (.*\.)?elitedaily\.com$
+    - (.*\.)?bustle\.com$
+    - (.*\.)?inverse\.com$
+    - (.*\.)?mic\.com$
+    - (.*\.)?nylon\.com$
+    - (.*\.)?thespruce\.com$
+    - (.*\.)?thespruceeats\.com$
+    - (.*\.)?thesprucepets\.com$
+    - (.*\.)?treehugger\.com$
+    - (.*\.)?dailyom\.com$
+    - (.*\.)?byrdie\.com$
+    - (.*\.)?mydomaine\.com$
+    - (.*\.)?brides\.com$
+    - (.*\.)?instyle\.com$
+    - (.*\.)?shape\.com$
+    - (.*\.)?self\.com$
+    - (.*\.)?allure\.com$
+    - (.*\.)?glamour\.com$
+    - (.*\.)?vogue\.com$
+    - (.*\.)?gq\.com$
+    - (.*\.)?wired\.com$ # Condé Nast; still sometimes good — remove if you disagree
+    - (.*\.)?newyorker\.com$ # same caveat
+    - (.*\.)?vanityfair\.com$
+    - (.*\.)?tatler\.com$
+    - (.*\.)?teenvogue\.com$
+    - (.*\.)?wmagazine\.com$
+    - (.*\.)?them\.us$
+    - (.*\.)?pitchfork\.com$
+
+    # Gaming content mills
+    - (.*\.)?ign\.com$
+    - (.*\.)?gamespot\.com$
+    - (.*\.)?nintendolife\.com$
+    - (.*\.)?purexbox\.com$
+    - (.*\.)?pushsquare\.com$
+    - (.*\.)?metacritic\.com$
+
+    # Tech review mills
+    - (.*\.)?cnet\.com$
+    - (.*\.)?zdnet\.com$
+    - (.*\.)?pcmag\.com$
+    - (.*\.)?techradar\.com$
+    - (.*\.)?tomsguide\.com$
+
+  remove:
+    - (.*\.)?pinterest\.com$
+    - (.*\.)?pinterest\.[a-z]+$
+    - (.*\.)?fandom\.com$
+
+engines:
+  - name: google
+    engine: google
+    shortcut: go
+    weight: 4
+
+  - name: bing
+    engine: bing
+    shortcut: bi
+    weight: 1
+    disabled: true
+
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+    weight: 2
+    disabled: false
+
+  - name: brave
+    engine: brave
+    shortcut: br
+    weight: 2
+    disabled: false
+
+  - name: startpage
+    engine: startpage
+    shortcut: sp
+    weight: 3
+    disabled: false
+
+  - name: qwant
+    engine: qwant
+    shortcut: qw
+    weight: 1
+    disabled: false
+
+  - name: mojeek
+    engine: mojeek
+    shortcut: mjk
+    weight: 1
+    disabled: false
+
+  - name: wikipedia
+    engine: wikipedia
+    shortcut: wp
+    weight: 4
+    display_type: ["infobox"]
+    categories: [general]
+
+  - name: github
+    engine: github
+    shortcut: gh
+    weight: 2
+
+  - name: github code
+    engine: github_code
+    shortcut: ghc
+    weight: 2
+    disabled: true
+    ghc_auth:
+      type: "none"
+      token: "token"
+    ghc_highlight_matching_lines: true
+    ghc_strip_new_lines: true
+    ghc_strip_whitespace: false
+    timeout: 10.0
+
+  - name: gitlab
+    engine: gitlab
+    shortcut: gl
+    weight: 2
+    base_url: https://gitlab.com
+    disabled: true
+    about:
+      website: https://gitlab.com/
+      wikidata_id: Q16639197
+
+  - name: reddit
+    engine: reddit
+    shortcut: re
+    weight: 2
+    page_size: 25
